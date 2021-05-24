@@ -1,0 +1,5 @@
+alias num = int in
+
+(lambda x:num.
+	x + x + x
+)(4)

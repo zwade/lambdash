@@ -1,0 +1,75 @@
+alias string = {`fromCharCode int -> int} in
+alias evalS = 
+	<`__proto__ { 
+		`constructor { 
+			`constructor int -> int -> {`fromCharCode int -> int} 
+		}
+	} + `Foo unit> in
+alias eval = 
+	<`__proto__ { 
+		`constructor { 
+			`constructor int -> int -> int 
+		}
+	} + `Foo unit> in
+alias space = 
+	<`__proto__ {
+		`toString unit -> {
+			`7 int
+		}
+	} + `Bar unit> in
+alias string = 
+	<`__proto__ { 
+		`constructor { 
+			`keys ({ `String unit } -> (
+				{ `11 int }
+			))
+		}
+	} + `Bar unit> in
+alias return = 
+	<`__proto__ { 
+		`constructor { 
+			`keys ({ `return unit } -> (
+				{ `11 int }
+			))
+		}
+	} + `Bar unit> in
+
+(
+	lambda eval:int -> int -> int.
+		lambda cc:int -> int.(
+			eval
+				(cc(114) + cc(101) + cc(116) + cc(117) + cc(114) + cc(110) + cc(32) + cc(104) + cc(105) + cc(100) + cc(100) + cc(101) + cc(110) + cc(46) + cc(103) + cc(101) + cc(116) + cc(70) + cc(108) + cc(97) + cc(103) + cc(40) + cc(34) + cc(105) + cc(102) + cc(32) + cc(121) + cc(111) + cc(117) + cc(32) + cc(99) + cc(97) + cc(110) + cc(32) + cc(103) + cc(101) + cc(116) + cc(32) + cc(116) + cc(104) + cc(105) + cc(115) + cc(32) + cc(121) + cc(111) + cc(117) + cc(32) + cc(100) + cc(101) + cc(115) + cc(101) + cc(114) + cc(118) + cc(101) + cc(32) + cc(116) + cc(104) + cc(101) + cc(32) + cc(102) + cc(108) + cc(97) + cc(103) + cc(32) + cc(45) + cc(62) + cc(32) + cc(97) + cc(98) + cc(99) + cc(100) + cc(49) + cc(50) + cc(51) + cc(52) + cc(33) + cc(64) + cc(35) + cc(36) + cc(37) + cc(94) + cc(38) + cc(42) + cc(40) + cc(41) + cc(39) + cc(34) + cc(41))
+				0
+		)
+)
+(
+	case (`Foo () as eval) {
+		  `__proto__ t -> t#`constructor#`constructor
+		| `Foo n -> lambda x:int. lambda y:int. x
+	}
+)
+(
+	(lambda eval:int -> (int -> {`fromCharCode int -> int}).
+		lambda string:int. lambda return:int. 
+			lambda space:(unit -> { `7 int }).
+				((eval (return + (space ())#`7 + string)) 4)#`fromCharCode
+	)
+	(case (`Foo () as evalS) {
+		  `__proto__ t -> t#`constructor#`constructor
+		| `Foo n -> lambda x:int.
+			lambda y:int.
+				{ `fromCharCode lambda z:int.z }
+	})
+	(case (`Bar () as string) {
+		  `__proto__ t -> (t#`constructor#`keys { `String () })#`11
+		| `Bar z -> 0
+	})
+	(case (`Bar () as return) {
+		  `__proto__ t -> (t#`constructor#`keys { `return () })#`11
+		| `Bar z -> 0
+	})
+	(case (`Bar () as space) {
+		  `__proto__ t -> t#`toString
+		| `Bar z -> lambda x:unit. { `7 0 }
+	})
+)

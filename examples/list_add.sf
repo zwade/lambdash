@@ -1,0 +1,21 @@
+alias clist = rec l.<`Nil unit + `Cons { `Data int * `Res l }> in
+alias list  = <`Nil unit + `Cons { `Data int * `Res clist }> in
+
+
+(fix sum x:clist returns int.
+  case (unfold x) {
+      `Nil u -> 0
+    | `Cons data -> (data#`Data + (sum data#`Res))
+  }
+)(fold as clist
+  `Cons {`Data 3, `Res (
+    fold as clist
+      `Cons {`Data 7, `Res (
+        fold as clist
+          `Cons {`Data 20, `Res (
+            fold as clist
+              `Nil () as list
+          )} as list
+      )} as list
+  )} as list
+)

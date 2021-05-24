@@ -1,0 +1,4 @@
+(lambda x:int.
+	lambda y:int.
+		x + y
+)(4)(5)

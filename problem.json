@@ -1,0 +1,10 @@
+{
+	"name": "LambDash",
+	"category": "Web Exploitation",
+	"description": "C? Who uses that anymore. If we really want to be secure, we should all start learning lambda calculus. <code>http://{{server}}:{{port}}</code> (<a href=\"http://{{server}}:{{port}}\">link</a>)",
+	"score" : 800,
+	"hints": ["This compiler is 99.9% bug free! I'm sure the other 0.1% won't amount to anything..."],
+	"author": "Zachary Wade",
+	"organization": "picoCTF",
+        "pkg_dependencies": ["nodejs"]
+}
